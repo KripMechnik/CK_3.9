@@ -35,16 +35,20 @@ class RecyclerViewAdapter(private val context: Context, private val viewModel: E
         val popupMenu = PopupMenu(context, view)
         popupMenu.menuInflater.inflate(R.menu.menu_main, popupMenu.menu)
 
-//        popupMenu.setOnMenuItemClickListener { item ->
-//            when (item.itemId) {
-//                // Обработка выбранного пункта меню
-//                R.id.menu_item_delete -> {
-//                    // Логика удаления элемента
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+
+                R.id.delete -> {
+                    viewModel.deleteData(position)
+                    true
+                }
+                R.id.copy -> {
+                    viewModel.copyData(position)
+                    true
+                }
+                else -> false
+            }
+        }
 
         popupMenu.show()
     }

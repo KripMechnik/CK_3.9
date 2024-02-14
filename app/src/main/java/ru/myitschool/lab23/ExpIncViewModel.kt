@@ -17,4 +17,10 @@ class ExpIncViewModel : ViewModel() {
         currentList.removeAt(i)
         arrayOfExpenses.value = currentList
     }
+
+    fun copyData(i: Int){
+        val currentItem = arrayOfExpenses.value.orEmpty()[i]
+        val currentList = arrayOfExpenses.value.orEmpty().toMutableList()
+        currentList.add(currentItem)
+    }
 }
